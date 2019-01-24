@@ -1,1 +1,1 @@
-module snowflake
+module github.com/lxzan/snowflake

@@ -36,10 +36,8 @@ func timer() {
 }
 
 func NextID() uint64 {
-	var t = atomic.LoadUint64(&snow.Timestamp)
-	var i = atomic.LoadUint64(&snow.Index)
-	atomic.AddUint64(&snow.Index, 1)
-	return t + snow.MachineID + i
+	var i = atomic.AddUint64(&snow.Index, 1)
+	return snow.Timestamp + snow.MachineID + i
 }
 
 func Decode(id uint64) *SnowFlake {
