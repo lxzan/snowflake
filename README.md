@@ -3,7 +3,7 @@ snowflake algorithm
 
 ### Feature
 - 200+ years long time support
-- support 2048 processes(machines) at most
+- support 1024 processes(machines) at most
 - generate 1,000,000 id/s per process
 
 ### Example
