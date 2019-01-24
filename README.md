@@ -12,7 +12,7 @@ import "github.com/lxzan/snowflake"
 
 func main()  {
 	snowflake.Initialize(1)
-	Println(snowflake.NextID())
+	println(snowflake.NextID())
 	
 	var o = Decode(1662468685074268160)
 	println(fmt.Sprintf("%v",o))
