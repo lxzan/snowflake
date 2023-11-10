@@ -7,8 +7,7 @@ import (
 )
 
 func TestNextID(t *testing.T) {
-	Initialize(1)
-	println(NextID())
+	s := NewSnowFlake(1)
 	var m = sync.Map{}
 
 	var wg = sync.WaitGroup{}
@@ -16,7 +15,7 @@ func TestNextID(t *testing.T) {
 		wg.Add(1)
 		go func() {
 			for j := 0; j < 1000; j++ {
-				var id = NextID()
+				var id = s.NextID()
 				if _, ok := m.Load(id); ok {
 					panic(fmt.Sprintf("%v", id))
 				}
@@ -30,12 +29,13 @@ func TestNextID(t *testing.T) {
 
 func TestDecode(t *testing.T) {
 	var o = Decode(1662476606067703809)
-	println(fmt.Sprintf("%v", o))
+	fmt.Println(fmt.Sprintf("%v\n", o))
 }
 
-func BenchmarkKey(b *testing.B) {
-	Initialize(1)
+func BenchmarkNextID(b *testing.B) {
+	s := NewSnowFlake(1)
+	b.ReportAllocs()
 	for i := 0; i < b.N; i++ {
-		NextID()
+		s.NextID()
 	}
 }
