@@ -61,7 +61,6 @@ func (s *SnowFlake) NextID() uint64 {
 	return s.timestamp + s.id + atomic.AddUint64(&s.index, 1)
 }
 
-
 // 这里解析可能不在返回 SnowFlake 对象，可能是领  SnowFlake 的内部对对象
 func Decode(id uint64) *SnowFlake {
 	var b = fmt.Sprintf("%064b", id)
